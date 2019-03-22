@@ -98,35 +98,11 @@ function removeElement(elementId) {
 
    
 
-function removeaddElement(parentId, elementTag, elementClass,m,n,addelement) {
-    // Adds an element to the document
-    console.log('hellow world remove add Element');
-    // if(Grid[m][n].wieght>Grid[m][n].thresholdW){
-    removeElement(parentId);
-addelement(parentId, elementTag, elementClass,m,n);
-   
-    }
 
-    function removeaddElement1(parentId, elementTag, elementClass,m,n,addelement) {
-    // Adds an element to the document
-    console.log('hellow world remove add Element');
-    // if(Grid[m][n].wieght>Grid[m][n].thresholdW){
-    // removeElement(parentId);
-addelement(parentId, elementTag, elementClass,m,n);
-   
-    }
 // burst funtion for a cell
 
 
-function removeElementandexecute(elementId,executerecursion)
-{
- var element = document.getElementById(elementId);
-    // element.removeChild(element);
-    $(element).empty();
-// console.log('second.....')
-    setTimeout(executerecursion(), 3000)
 
-}
 
 function burst(x1,y1,bgcolor,callback){
 	console.log("x is "+x1+y1)
@@ -505,6 +481,7 @@ function checkwin(arg){
     }}
  if(win){
  	alert(arg+' wins');
+ 	location.reload()
 
  }
 }
