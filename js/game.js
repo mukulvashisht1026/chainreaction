@@ -95,67 +95,47 @@ function removeElement(elementId) {
 		})
 	}
 
-function addOneElement(parentId, elementTag, elementClass,m,n) {
-    // Adds an element to the document
-    console.log('hellow world add One Element');
 
-    var colour = Grid[m][n].color
-    var p = document.getElementById(parentId);
-    var newElement = document.createElement(elementTag);
-    newElement.setAttribute('class', elementClass+1+colour);
-
-    for(var i =0;i<Grid[m][n].wieght;i++){
-    p.appendChild(newElement);
-
-    }
    
-}
+
 function removeaddElement(parentId, elementTag, elementClass,m,n,addelement) {
     // Adds an element to the document
     console.log('hellow world remove add Element');
     // if(Grid[m][n].wieght>Grid[m][n].thresholdW){
     removeElement(parentId);
-addelement(parentId, elementTag, elementClass,m,n)
-    // }
-    // setTimeout(,250);
-    // var colour = Grid[m][n].color
-    // var p = document.getElementById(parentId);
-    // var newElement = document.createElement(elementTag);
-    // newElement.setAttribute('class', elementClass+1+colour);
+addelement(parentId, elementTag, elementClass,m,n);
+   
+    }
 
-    // for(var i =0;i<Grid[m][n].wieght;i++){
-    // p.appendChild(newElement);
-
+    function removeaddElement1(parentId, elementTag, elementClass,m,n,addelement) {
+    // Adds an element to the document
+    console.log('hellow world remove add Element');
+    // if(Grid[m][n].wieght>Grid[m][n].thresholdW){
+    // removeElement(parentId);
+addelement(parentId, elementTag, elementClass,m,n);
+   
     }
 // burst funtion for a cell
-function checkcell(x,y,colo){
-	if(+Grid[x][y].wieght>+Grid[x][y].thresholdW){
-		Grid[x][y].wieght = 0;
-		Grid[x][y].color = 'black';
-		var id = 'm'+( +x + +1)+'k'+(y); 
-		removeElement(id);
-		// document.getElementById(id).style.color = 'black';
-		burst(x,y,colo,function check(m,n,bgcolor){
-			checkcell(m,n,bgcolor)	;
-	checkcell((m),(n),bgcolor)	;
-		});
-		console.log('burst cell '+x+':'+y);
-		
-	}
-	else {
-		return 0
-	}
+
+
+function removeElementandexecute(elementId,executerecursion)
+{
+ var element = document.getElementById(elementId);
+    // element.removeChild(element);
+    $(element).empty();
+// console.log('second.....')
+    setTimeout(executerecursion(), 3000)
+
 }
 
 function burst(x1,y1,bgcolor,callback){
 	console.log("x is "+x1+y1)
 	var id = 'm'+(x1)+'k'+(y1); 
 	document.getElementById(id).style.color = 'black';
-	Grid[(+x1)][(+y1)].already = false
-removeaddElement(id,'div','onecircles',x1,y1,function (){
-	return 0
+	// Grid[(+x1)][(+y1)].already = false
+// removeElementandexecute(id,function (){
 
-    });
+	// console.log('first.....')
 
 	if((x1==0 && y1==0 )){
 	var id1 = 'm'+( +x1 + +1)+'k'+(y1); 
@@ -164,12 +144,8 @@ removeaddElement(id,'div','onecircles',x1,y1,function (){
 	
 	Grid[( +x1 + +1)][y1].color = bgcolor
 	Grid[(+x1)][(+y1 + +1)].color = bgcolor
-    removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-
-    });
-    // removeaddElement(id2,'div','onecircles',x1,y1);
+    
+    // removeaddElement1(id2,'div','onecircles',x1,y1);
 
 Grid[( +x1 + +1)][+y1].wieght = Grid[( +x1 + +1)][+y1].wieght + +1
 	Grid[(+x1)][(+y1 + +1)].wieght = Grid[(+x1)][(+y1 + +1)].wieght + +1
@@ -195,10 +171,7 @@ Grid[( +x1 + +1)][+y1].wieght = Grid[( +x1 + +1)][+y1].wieght + +1
 		document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;	
 	
-removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-    });
+
 	Grid[( +x1 + +1)][y1].wieght = Grid[( +x1 + +1)][y1].wieght + +1
 	Grid[(+x1)][(+y1 - +1)].wieght = Grid[(+x1)][(+y1 - +1)].wieght + +1
 		Grid[( +x1 + +1)][y1].color = bgcolor 
@@ -220,10 +193,7 @@ removeaddElement(id,'div','onecircles',x1,y1,function (){
 	var id2 = 'm'+(x1)+'k'+(+y1 + +1); 
 	document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;	
-	removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-    });
+	
 console.log('x1==c-1 && y1==0')
 	Grid[( +x1 - +1)][y1].wieght = Grid[( +x1 - +1)][+y1].wieght + +1
 	Grid[(+x1)][(+y1 + +1)].wieght = Grid[(+x1)][(+y1 + +1)].wieght + +1
@@ -253,10 +223,7 @@ Grid[( +x1 - +1)][y1].color = bgcolor;
 
 	document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;	
-	removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-    });
+	
 	Grid[( +x1 - +1)][y1].already = true;
 	Grid[(+x1)][(+y1 - +1)].already = true;
 		// document.getElementById(id).style.color = 'black';
@@ -288,12 +255,7 @@ Grid[( +x1 - +1)][y1].color = bgcolor;
 		document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;
 	document.getElementById(id3).style.color = bgcolor	;	
-	removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-addOneElement(id3,'div','onecircles',x1,y1)
-    
-    });
+	
 	// addOneElement(id2,'div','onecircles',x1,y1)
 
 
@@ -318,12 +280,7 @@ Grid[( +x1+ +1)][+y1].color = bgcolor
 Grid[( +x1+ +1)][+y1].already = true
 	Grid[(+x1)][(+y1+ +1 )].already = true
 	Grid[(+x1)][(+y1- +1 )].already = true
-	removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-addOneElement(id3,'div','onecircles',x1,y1)
-    
-    });
+	
 
 	
 		document.getElementById(id1).style.color = bgcolor	;	
@@ -350,12 +307,7 @@ console.log('x1==c-1')
 Grid[( +x1 - +1)][+y1].already = true
 	Grid[(+x1)][(+y1+ +1 )].already = true
 	Grid[(+x1)][(+y1 - +1 )].already = true
-removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-addOneElement(id3,'div','onecircles',x1,y1)
-    
-    });
+
 
 		document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;
@@ -382,12 +334,7 @@ Grid[( +x1)][+y1- +1].color = bgcolor
 	Grid[( +x1)][+y1- +1].already = true
 	Grid[(+x1+ +1)][(+y1 )].already = true
 	Grid[(+x1- +1)][(+y1 )].already = true
-removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1)
-	addOneElement(id2,'div','onecircles',x1,y1)
-addOneElement(id3,'div','onecircles',x1,y1)
-    
-    });
+
 		document.getElementById(id1).style.color = bgcolor	;	
 	document.getElementById(id2).style.color = bgcolor	;
 	document.getElementById(id3).style.color = bgcolor
@@ -420,13 +367,7 @@ Grid[( +x1)][+y1- +1].already = true
 	Grid[(+x1)][(+y1 + +1 )].already = true
 	Grid[(+x1- +1)][(+y1 )].already = true
 	Grid[(+x1+ +1)][(+y1 )].already = true
-	removeaddElement(id,'div','onecircles',x1,y1,function (){
-	addOneElement(id1,'div','onecircles',x1,y1);
-	addOneElement(id2,'div','onecircles',x1,y1);
-addOneElement(id3,'div','onecircles',x1,y1);
-	addOneElement(id4,'div','onecircles',x1,y1);
-    
-    });
+
 console.log('char vala function')
 	
 			document.getElementById(id1).style.color = bgcolor	;	
@@ -443,9 +384,38 @@ console.log('char vala function')
 	 
 // console.log('burst function');
 	}
-		
+	
+// });
+	
 
 // console.log('burst function');
+}
+function removeElement2(elementId,myfunc){
+ var element = document.getElementById(elementId);
+    // element.removeChild(element);
+    $(element).empty();
+// console.log('second.....')
+    myfunc();
+
+}
+function checkcell(x,y,colo){
+	if(+Grid[x][y].wieght > +Grid[x][y].thresholdW){
+		
+		var id = 'm'+( +x + +1)+'k'+(y);
+		Grid[x][y].wieght = 0;
+		Grid[x][y].color = 'black';
+			// checkcell(m,n,bgcolor)	;
+Grid[x][y].already=false
+			
+		burst(x,y,colo,function (x,y,colour) {
+
+			checkcell((x),(y),colour);
+		console.log('bursting is great') });
+		// document.getElementById(id).style.color = 'black';
+		
+		// console.log('burst cell '+x+':'+y);
+		
+	}
 }
 
 function myevent(arg) {
@@ -455,15 +425,15 @@ function myevent(arg) {
 	if(!Grid[x1][y1].already || Grid[x1][y1].color == playerslist[x%noOfPlayers].color ){
 
 	Grid[x1][y1].wieght = Grid[x1][y1].wieght + +1;
-	console.log(x1,y1)
-	gameOn(playerslist,x1,y1,function checkwin1(){
+	// console.log(x1,y1)
+	gameOn(playerslist,x1,y1,function (){
 		checkwin(Grid[x1][y1].color);
 
 	});
 	
 	}
 	else {
-		alert('choose another cell')
+		console.log('choose another cell');
 	}
 }
 // =============================================
@@ -471,47 +441,48 @@ function play(x1,y1,colo){
 var id = 'm'+( +x1)+'k'+(y1);
 
 	// if(Grid[x1][y1].wieght==1){
-		removeaddElement(id,'div','onecircles',x1,y1,function (){
-		
-		for(var i =0;i<Grid[x1][y1].wieght;i++){
-
-		addOneElement(id,'div','onecircles',x1,y1);
-
-
-    }
-    
-    });
-		// console.log('yeh toh chal rha h')
-										
-	// }
-	// else if(Grid[x1][y1].wieght==2){
-				// addTwoElement(id,'div','twocircles');
-										
-	// }
-
-	// else if(Grid[x1][y1].wieght==3){
-		// addThreeElement(id,'div','threecircles');
-										
-	// }
+	
+	
 	
 	if(Grid[x1][y1].wieght>Grid[x1][y1].thresholdW){
 		// var colo = 'red'
 		// call back function definition====================
-		burst(x1,y1,colo,function (x,y,colour) {checkcell((x),(y),colour);
-		console.log('bursting is great') });
 		Grid[x1][y1].wieght = +0;
-var id = 'm'+(+x1)+'k'+(y1);
+Grid[x1][y1].already=false
+		burst(x1,y1,colo,function (x,y,colour) {
 
-		removeElement(id);	
+			checkcell((x),(y),colour);
+		console.log('bursting is great') });
+
 console.log('if function');
 
 	}
-	else{
-console.log('else function',Grid[x1][y1].wieght);
-	var chances= playerslist.length
-		var chance = x%chances;
-	// Grid[x1][y1].wieght = +Grsid[x1][y1].wieght + +1;
-	}
+// 	else{
+// // console.log('else function',Grid[x1][y1].wieght);
+// // 	var chances= playerslist.length
+// // 		var chance = x%chances;
+// 	// Grid[x1][y1].wieght = +Grsid[x1][y1].wieght + +1;
+// 	}
+}
+function fillelement(id,x,y){
+var cellId = 'm'+(x)+'k'+(y);
+var colour = Grid[x][y].color
+    
+    // var l = p.children.length
+    for(var j =0 ; j<Grid[x][y].wieght;j++){
+    var p = document.getElementById(cellId);
+    console.log('eppending')
+    var newElement = document.createElement('div');
+    newElement.setAttribute('class', 'onecircles'+1+colour);
+
+    p.appendChild(newElement);
+
+    	// p.children[j].setAttribute('class',elementClass+1+colour);
+    }
+    // for(var i =0;i<Grid[m][n].wieght;i++){
+
+    // }
+
 }
 function checkwin(arg){
 
@@ -525,12 +496,15 @@ function checkwin(arg){
     	if(Grid[j][i].color != arg && Grid[j][i].color != 'black'){
     		win = false;
     	}
+    	removeElement2(id,function(){
+    	fillelement(id,j,i);
 
+    	});
 
-    	addOneElement(parentId, elementTag, elementClass,j,i)
+    	// addOneElement(parentyyyyyId, elementTag, elementClass,j,i)
     }}
  if(win){
- 	alert('someone wins');
+ 	alert(arg+' wins');
 
  }
 }
@@ -553,7 +527,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 				Grid[x1][y1].already = true
 
 
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				play(x1,y1,playerslist[chance].color);
 
 				break;
@@ -563,7 +537,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 				Grid[x1][y1].color = playerslist[chance].color;
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				play(x1,y1,playerslist[chance].color);
 
 				// console.log('player'+chance)
@@ -578,7 +552,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
 
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				play(x1,y1,playerslist[chance].color);
 
 				// console.log('player'+chance)
@@ -591,7 +565,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
 
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				play(x1,y1,playerslist[chance].color);
 
 				// console.log('player'+chance)
@@ -604,7 +578,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
 
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				play(x1,y1,playerslist[chance].color);
 				// console.log('player'+chance)
 
@@ -612,7 +586,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 				
 				case 5 :
 				x = x + 1;
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				Grid[x1][y1].color = playerslist[chance].color;
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
@@ -624,7 +598,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 				
 				case 6 :
 				x = x + 1;
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				Grid[x1][y1].color = playerslist[chance].color;
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
@@ -636,7 +610,7 @@ var id = 'm'+(+x1)+'k'+(y1);
 				
 				case 7 :
 				x = x + 1;
-				playerslist[chance].points = playerslist[chance].points + +1;  
+				// playerslist[chance].points = playerslist[chance].points + +1;  
 				Grid[x1][y1].color = playerslist[chance].color;
 		// document.getElementById(id).style.color = playerslist[chance].color;
 				Grid[x1][y1].already = true
@@ -653,6 +627,14 @@ var id = 'm'+(+x1)+'k'+(y1);
 		if(x!=1){
 			console.log('checking win')
 		checkwin1(playerslist[chance].color); 
+		}
+
+		else{
+	removeElement2(id,function(){
+    	fillelement(id,x1,y1);
+
+    	});
+
 		}
 
 	}
