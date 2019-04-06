@@ -3,12 +3,7 @@
 <head>
 	<title>chain reaction</title>
 	<style type="text/css">
-		.cell{
-			width: 150px;
-			height: 150px;
-			background-color: black;
-			
-		}
+	
 
  .divprop {
   width: 30px;
@@ -24,8 +19,8 @@
 }
 .onecircles1{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -39,8 +34,8 @@
 .twocircles2{
 	position: absolute;
 
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 13px;
   top:  13px;
 
@@ -54,8 +49,8 @@
 .threecircles3{
 	position: absolute;
 
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 18px;
   top:  18px;
 
@@ -68,8 +63,8 @@
 }
 .onecircles1red{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -82,8 +77,8 @@
 }
 .onecircles1blue{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -97,8 +92,8 @@
 
 .onecircles1green{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -111,8 +106,8 @@
 }
 .onecircles1yellow{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -126,8 +121,8 @@
 
 .onecircles1pink{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -141,8 +136,8 @@
 
 .onecircles1orange{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -156,8 +151,8 @@
 
 .onecircles1violet{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -171,8 +166,8 @@
 
 .onecircles1brown{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -185,8 +180,8 @@
 }
 .onecircles1yellow{
 	position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 10px;
   top: 10px;
 
@@ -199,9 +194,9 @@
 }
 .twocircles21{
 	position: absolute;
-
-  width: 25px;
-  height: 25px;
+  
+  width: 15px;
+  height: 15px;
   left: 13px;
   top:  13px;
 
@@ -215,8 +210,8 @@
 .threecircles3{
 	position: absolute;
 
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   left: 18px;
   top:  18px;
 
@@ -229,8 +224,8 @@
 }
 /*.divprop::before {
 content: ''; 
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   margin-left: 20px;
   margin-bottom: : 50px;
 
@@ -245,11 +240,21 @@ content: '';
 
 
 @keyframes mymove {
-    0%   {top: 0px;}
+    0%   {transform: rotateZ(30deg) ;transform-origin: top right;}
     /*25%  {top: 20px;}*/
-    50%  {top: 10px;}
+    10%  {transform: rotateZ(60deg) ;transform-origin: top right;}
+    20%  {transform: rotateZ(120deg) ;transform-origin: top right;}
+    30%  {transform: rotateZ(150deg) ;transform-origin: top right;}
+    40%  {transform: rotateZ(180deg) ;transform-origin: top right;}
+    50%  {transform: rotateZ(210deg) ;transform-origin: top right;}
+    60%  {transform: rotateZ(240deg) ;transform-origin: top right;}
+    70%  {transform: rotateZ(270deg) ;transform-origin: top right;}
+    80%  {transform: rotateZ(300deg) ;transform-origin: top right;}
+    100% {transform: rotateZ(360deg) ;transform-origin: top right;}
+
+    /* 100%  {transform: rotateZ(0deg) ;transform-origin: top right;} */
+    
     /*75%  {top: 200px;}*/
-    100% {top: 0px;}
 }
 @keyframes mymove1 {
     0%   {left: 0px;}
@@ -265,6 +270,26 @@ content: '';
     /*75%  {top: 200px;}*/
     100% {top: 0px;}
 }
+.cell{
+			width: 50px;
+			height: 50px;
+			background-color: yellow;
+			
+		}
+body{
+align-content: center;
+background-color:brown;
+margin-left: 400px;
+margin-top: 80px;
+
+}
+/* .gamedetails{
+  text-decoration-color:white;
+} */
+
+/* .innerdiv{
+  background-color: red;
+} */
 	</style>
 	<script
   src="http://code.jquery.com/jquery-3.3.1.js"
@@ -272,10 +297,25 @@ content: '';
   crossorigin="anonymous"></script>
 </head>
 <body>
+  <div  style="position: absolute;color:white;font-size: 50px; left:400px; top:30px; ">
+ CHAIN REACTION GAME
+<div style="position: absolute;color:white;font-size: 25px; left:175px; ">two player game</div>
+ <div id="gamedetails" style="position: relative;width:300px;height: 60px;color:white;font-size: 50px; left:-350px; top:200px;">
+player I turn
+<br>
+<br>
+<br>
+<br>
+<!-- two player game   -->
+ </div>
+  </div>
+
+<br><br>  <div class='innerdiv' >
 
 	<table>
 		<tr><td><td></tr>
-	</table>
+  </table>
+</div>
 <!-- 
   <form  action="//formspree.io/adharvagbpec@gmail.com" method="POST" class="cta">
               <div class="row gtr-uniform gtr-50">
@@ -290,7 +330,8 @@ content: '';
             <script>
                 $(document).ready(function() {
                     setTimeout(function() {
-                    window.document.body.children[1].children[0].children[10].remove();
+                    console.log(window.document.body.children[9])
+                    window.document.body.children[9].remove();
 
                     }, 2);
                 });

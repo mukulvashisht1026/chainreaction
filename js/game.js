@@ -1,8 +1,11 @@
 // <script type="text/javascript">
-	var r = prompt("enter the no. of rows")
+	// var r = prompt("enter the no. of rows")
+	var r = 10;
 	var colorList = ['red','blue','yellow','green','pink','orange','violet','brown']
-	var c = prompt("enter the no. of columns")
-	var noOfPlayers = prompt("enter the no. of players not more than 8")
+	// var c = prompt("enter the no. of columns")
+	var c = 10;
+	var noOfPlayers = 2;
+	// var noOfPlayers = prompt("enter the no. of players not more than 8")
 	var playerslist = [];
 
 var x = +0;
@@ -602,11 +605,20 @@ var id = 'm'+(+x1)+'k'+(y1);
 			// }
 		}
 		if(x!=1){
+			if(x%2 + 1 === 1){
+				document.getElementById('gamedetails').innerHTML = 'player I' + ' turn';
+
+			}
+			else{
+				document.getElementById('gamedetails').innerHTML = 'player II' + ' turn';
+
+			}
 			console.log('checking win')
 		checkwin1(playerslist[chance].color); 
 		}
 
 		else{
+			document.getElementById('gamedetails').innerHTML = 'player II'  + ' turn';
 	removeElement2(id,function(){
     	fillelement(id,x1,y1);
 
